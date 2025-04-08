@@ -1,0 +1,28 @@
+# Binaries for programs and plugins
+main
+MaisFocoZeroAnsiedade
+logs
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+
+# Ignore binary output folders
+bin/
+dist/
+pages/*
+db_mock/
+
+# Ignore common editor/system specific metadata
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# ENV
+.env
+.env.local
+
+# vweb and database
+*.db

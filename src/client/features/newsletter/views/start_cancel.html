@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    
+    @include '/src/shareds/components/og/og.html'
+
+    <title>Cancelamento de Newsletter - MaisFoco</title>
+    @css '/assets/base.css'
+</head>
+
+<body>
+    <div class="container text-center" style="max-width: 800px;">
+        <!-- Logo section -->
+        <div class="margin-bot">
+            <img src="/assets/images/logo.webp" alt="MaisFoco Logo" style="max-width: 200px;">
+        </div>
+
+        @if msg_error == ''
+        <!-- Confirmation message -->
+        <article>
+            <h1 class="margin-bot">Quase lá!</h1>
+            <p class="margin-bot" style="font-size: 18px;">Para finalizar o cancelamento, enviamos um link de confirmação para o contato:</p>
+            <p class="font-bold margin-bot" style="font-size: 22px;">@contact</p>
+            <p class="margin-bot" style="font-size: 16px;">Por favor, verifique seu @contact_mode e clique no link de confirmação para concluir o processo de cancelamento.</p>
+        </article>
+
+        <!-- Additional information -->
+        <div class="margin-top margin-bot padding-bot">
+            @if contact_mode == 'Email'
+            <p>Não recebeu no @contact_mode? Verifique sua pasta de spam ou tente novamente mais tarde.</p>
+            @endif
+        </div>
+
+        @else
+        <!-- Confirmation message -->
+        <article>
+            @msg_error
+        </article>
+        @endif
+
+        <!-- Return button -->
+        <div class="margin-top padding-top">
+            <a href="/" class="nbtl-button w-content">Voltar para a página inicial</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+.content-section {
+    margin: 32px 0;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background: var(--background-color);
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0 var(--border-color);
+    padding: 16px;
+}
+
+.card[dashed] {
+    transform: rotate(-5deg);
+}
+
+.free-tag {
+    background: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: var(--default-rounded-square);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.plataform-name {
+    background: gray;
+    color: var(--font-color);
+    padding: 5px 10px;
+    border-radius: var(--default-rounded-square);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 3px solid var(--border-color);
+}
+
+.social-link {
+    margin-left: 20px;
+    padding: 5px 10px;
+}

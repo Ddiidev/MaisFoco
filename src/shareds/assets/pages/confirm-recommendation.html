@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Recomendação - MaisFoco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="margin: 0; background-color: #FFF8E3; color: #4C3D3D; font-family: 'Space Mono', monospace;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        <!-- Added logo section -->
+        <!-- Logo section with table -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 20px; margin-bottom: 20px;">
+            <tr>
+                <td align="center">
+                    <img src="@logo" alt="MaisFoco Logo" style="max-width: 200px; height: auto;">
+                </td>
+            </tr>
+        </table>
+
+        <div style="margin-top: 9px; margin-bottom: 9px;">
+            <h1 style="text-align: center;">Olá, <span style="font-weight: bold;"> ${ nome } </span></h1>
+            <p style="text-align: center;">Só gostaria de confirmar a sua recomendação no maisfoco.life.</p>
+        </div>
+
+        <div style="margin-top: 9px; margin-bottom: 9px; text-align: center;">
+            <h2>A recomendação foi:</h2>
+            <div style="display: inline-block; text-align: left;">
+                <p><span style="font-weight: bold;">Link:</span> <a
+                        style="color: #FFB200; text-decoration: none; border-bottom: 3px solid #4C3D3D;"
+                        href="@recommendation.link"> @recommendation.link </a></p>
+                <p>
+                    <span style="font-weight: bold;">Tipo:</span>
+                    ${ tipo }
+                </p>
+
+                @if observacao != ''
+                <p>
+                    <span style="font-weight: bold;">Observação:</span>
+                    ${ observacao }
+                </p>
+                @endif
+            </div>
+        </div>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 9px;">
+            <tr>
+                <td align="center">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center">
+                                <a href="@link_confim"
+                                    style="display: inline-block; min-width: 200px; padding: 10px 20px; background-color: #FFD93D; border: 3px solid #4C3D3D; border-radius: 5px; color: black; font-weight: bold; text-decoration: none; text-align: center;">
+                                    Click aqui para confirmar
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="padding-top: 15px;">
+                                <a href="@link_confim"
+                                    style="color: #FFB200; text-decoration: none; border-bottom: 3px solid #4C3D3D;">
+                                    <small>Click aqui para confirmar</small>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+.floating-card {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 12px 20px;
+}
+
+.floating-card button {
+    background-color: white;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 3px;
+}
+
+.menu-icon span {
+    width: 16px;
+    height: 2px;
+    background-color: #333;
+    display: block;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    /* right: 0; */
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}

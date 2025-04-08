@@ -1,0 +1,135 @@
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:14
+    container_name: maisfoco-postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=${NAME_DB}
+      - POSTGRES_PASSWORD=${PASS_DB}
+      - POSTGRES_USER=${USER_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgresql-init:/docker-entrypoint-initdb.d
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${USER_DB} -d ${NAME_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 512M
+    networks:
+      maisfoco-network:
+        aliases:
+          - postgres
+
+  # Instâncias da aplicação MaisFoco
+  maisfoco1:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.maisfoco
+    container_name: maisfoco-app1
+    image: maisfoco-app:latest
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./.env.local:/app/.env.local
+      - ./pages1:/pages
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./.env.local
+    deploy:
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 256M
+    networks:
+      - maisfoco-network
+
+  maisfoco2:
+    image: maisfoco-app:latest
+    container_name: maisfoco-app2
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./.env.local:/app/.env.local
+      - ./pages2:/pages
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./.env.local
+    deploy:
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 256M
+    networks:
+      - maisfoco-network
+
+  # Nginx como balanceador de carga
+  nginx:
+    image: nginx:latest
+    container_name: maisfoco-nginx
+    restart: always
+    depends_on:
+      - maisfoco1
+      - maisfoco2
+    ports:
+      - "5058:5058"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: 200M
+    networks:
+      - maisfoco-network
+
+  # Job Send Recommendation Service
+  job_send_recommendation:
+    build:
+      context: ../job_send_recomendation
+      dockerfile: dockerfiles/Dockerfile.job_send_recomendation
+    container_name: job-send-recommendation
+    ports:
+      - "9009:9009"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ../job_send_recomendation/.env.local:/app/.env.local
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ../job_send_recomendation/.env.local
+    deploy:
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 256M
+    networks:
+      - maisfoco-network
+
+networks:
+  maisfoco-network:
+    name: maisfoco-network
+    driver: bridge
+
+volumes:
+  postgres-data:

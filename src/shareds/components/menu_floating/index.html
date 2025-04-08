@@ -1,0 +1,38 @@
+<div class="flex floating-card">
+    <div class="menu-container">
+        <button class="w-content margin-right" id="menu-toggle">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <article class="dropdown-menu w-content align-center text-center" id="dropdown-menu">
+            <a href="/" class="nbtl-button w-client-container">Início</a>
+            <a href="/sobre" class="nbtl-button w-client-container bg-nbtl-purple fg-nbtl-white">Sobre</a>
+            <a href="https://insigh.to/b/mais-foco" target="_blank" class="nbtl-button w-client-container bg-nbtl-black fg-nbtl-white">Feedback</a>
+            <a href="https://instagram.com/mais.foco.42" target="_blank" class="nbtl-button w-client-container bg-nbtl-green">Instagram</a>
+        </article>
+    </div>
+    <button target-model="modal-recomendation" class="w-content">✨ Contribua com sua recomendação</button>
+</div>
+
+<div id="modal-recomendation" class="modal" action-close-callback="closeRecomendationModal">
+    <article class="modal-content modal-recomendation">
+        <header class="flex justify-space-between align-center padding-bot text-center" style="height: 60px;">
+            <h2>Contribua com sua recomendação</h2>
+            <span class="close-modal" xclose-modal>&times;</span>
+        </header>
+        
+        <div class="margin-top padding-top">
+            ${ comp_recomendation_form() }
+        </div>
+    </article>
+</div>
+@js '/assets/tags/modal.js'
+<script>
+    // @include './index.js';
+</script>
+<style>
+    @include './index.css';
+</style>

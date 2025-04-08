@@ -1,0 +1,64 @@
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" async defer></script>
+
+<form class="container-full padding-lr padding-bt" style="max-width: 600px; margin: 0 auto;">
+    <div role="group">
+        <div class="margin-bt margin-right">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" class="container-full" placeholder="Seu nome">
+        </div>
+
+        <div class="margin-bt margin-left">
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" class="container-full" placeholder="seu@@email.com" required>
+            <small class="text-muted">Apenas para confirmação</small>
+        </div>
+    </div>
+
+    <div class="margin-bt">
+        <div class="flex gap-1 justify-center">
+            <label class="radio-container" tooltip-data="Filme, anime, série ou novela(😁) não se limite! 🚀">
+                <input type="radio" name="category" value="watch" required>
+                <span class="radio-label" >Filme 📺</span>
+                <span id="tooltip-data-movie" class="margin-top tooltip-for-mobile" hidden>
+                    Filme, anime, série ou novela(😁) não se limite! 🚀
+                </span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" name="category" value="read" required>
+                <span class="radio-label">Livro 📖</span>
+            </label>
+            <label class="radio-container">
+                <input type="radio" name="category" value="play" required>
+                <span class="radio-label">Jogo 🎮</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="margin-bt">
+        <label for="content-link">Link para o conteúdo*</label>
+        <input type="url" id="content-link" name="content-link" class="container-full" placeholder="https://..." required>
+    </div>
+
+    <div class="margin-bt">
+        <label for="observation">Observação</label>
+        <textarea id="observation" name="observation" class="container-full" rows="4" placeholder="Sua observação (opcional)"></textarea>
+    </div>
+
+    <div class="margin-bt">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABABQGopHB4AALWc" data-callback="handleTurnstileCallback"></div>
+    </div>
+
+    <div class="flex justify-center">
+        <button type="submit" onclick="sendRecomendation()" class="w-content" id="submitButton">Enviar Recomendação</button>
+    </div>
+</form>
+
+<script>
+    // @include './recomendation_form.js'
+</script>
+
+<style>
+    @include './recomendation_form.css';
+    @include './notification.css';
+</style>

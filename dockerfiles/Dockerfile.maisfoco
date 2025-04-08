@@ -1,0 +1,54 @@
+FROM ubuntu:20.04
+
+# Evitar interações durante instalação de pacotes
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Instalar dependências
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    build-essential \
+    libssl-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    postgresql \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Faz o clone do repositório via SSH
+WORKDIR /tmp
+RUN # Clone Vlang
+RUN git clone https://github.com/vlang/v && \
+    cd v && \
+    make && \
+    ./v symlink
+
+# Verificar a instalação
+RUN v --version
+
+# Criar diretório para a aplicação
+WORKDIR /app
+
+# Clonar o repositório MaisFoco
+COPY . .
+
+# Instalar dependências do projeto
+RUN v install
+RUN v install https://github.com/ken0x0a/v-dotenv
+RUN v install https://github.com/Ddiidev/recaptcha
+
+# Copiar o arquivo .env.local (será substituído pelo volume)
+COPY .env.local .env.local
+
+# Compilar o projeto
+RUN v -prod . -o MaisFoco
+
+# Expor a porta que a aplicação usa
+EXPOSE 5058
+
+# Script de inicialização
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+# Comando para iniciar a aplicação
+CMD ["/app/start.sh"]

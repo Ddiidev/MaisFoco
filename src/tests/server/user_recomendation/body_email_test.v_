@@ -1,0 +1,19 @@
+module user_recomendation
+
+import os
+import server.features.user_recomendation.controllers.body_email as control_body_email
+import server.features.user_recomendation.models
+
+fn test_basic_generate_body_email() {
+	model := models.UserRecomendation{
+		email: 'andreluiz.ddev@gmail.com'
+		link:  'https://netflix.com'
+		nome:  'André'
+		type:  .watch
+	}
+	body_str := control_body_email.body_email_string(model)
+
+	assert body_str.contains(model.nome or { '' })
+	assert body_str.contains(model.type.str())
+	assert body_str.contains(model.link)
+}

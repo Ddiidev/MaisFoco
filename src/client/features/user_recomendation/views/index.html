@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <title>Confirmar recomendação</title>
+    @css '/assets/styles.css'
+    @css '/assets/base.css'
+    <style>
+        @include './index.css';
+    </style>
+</head>
+
+<body>
+    <div class="flex floating-card">
+        <a href="/sobre" class="w-content nbtl-button">
+            <img width="24" src="/assets/icons/about.svg" />
+            Sobre
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="content-box">
+            <img src="/assets/images/logo.webp" alt="Logo" class="logo">
+            <div class="message-box">
+                <h1>Obrigado!</h1>
+                <h3>Prontinho, já ta confirmado!</h3>
+                <p>
+                    Trabalhar sozinho nesse projeto as vezes parece impossível, mas ter você aqui faz total diferença!!
+                    <br />
+                    <br />
+                    <strong>Agora sou eu, minha esposa, meus dois filhos e você 🫵🏻. Te agradeço demais por estar
+                        aqui!</strong>
+                </p>
+                <div class="success-icon">✓</div>
+            </div>
+        </div>
+    </div>
+
+    ${ footer_construct() }
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página não encontrada - Mais Foco</title>
+    @css '/assets/base.css'
+    @css '/assets/index.css'
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <style>
+        @include './not_found.css';
+    </style>
+</head>
+
+<body>
+    @js '/assets/base.js'
+
+    <div class="container">
+        <div class="flex floating-card">
+            <a href="/sobre" class="w-content nbtl-button">
+                <img width="24" src="/assets/icons/about.svg" />
+                Sobre
+            </a>
+        </div>
+
+        <img src="/assets/images/logo.webp" alt="Mais Foco Logo" class="logo">
+        <div class="error-box">
+            <h1>@msg_error</h1>
+            <h3>Você pode nos enviar um email caso entenda que isso foi um erro</h3>
+            <a href="mailto:@email_suporte" class="contact-button">
+                <i class="fas fa-envelope"></i> Entrar em Contato
+            </a>
+        </div>
+    </div>
+
+    ${ footer_construct() }
+</body>
+
+</html>

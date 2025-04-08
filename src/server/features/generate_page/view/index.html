@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+        <title>Foco!</title>
+        
+        @include '/src/shareds/components/og/og.html'
+          
+        @css '/assets/index.css'
+        @css '/assets/neubrutalism.css'
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" async defer></script>
+    </head>
+    
+<body>
+    ${ construct_menu_floating() }
+
+    <div id="container-main-gen" class="container">
+        <!-- Ler -->
+        <section class="content-section">
+            <h2 class="section-title">Ler</h2>
+
+            <gridflex class="justify-center">
+                @for i, amazon in amazon_products
+                @if amazon.link != ''
+                <article class="card">
+                    <gridflex>
+                        ${ comp_badge(.none, '', 'Amazon') }
+
+                        @if amazon.is_free()
+                            ${ comp_badge(.warn, '', 'Gratuito') }
+                        @else
+                            ${ comp_badge(.warn, '', 'Pago') }
+                        @endif
+
+                    </gridflex>
+                    <h3 class="card-title title-size">@amazon.title</h3>
+                    <div style="height: 250px;">
+                        <div class="card-image flex justify-center align-center">
+                            <img nbtl src="@amazon.thumbnails_links" style="width: 40%;" />
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center padding-lr">
+                        <a href="@amazon.link" target="_blank" class="container-full margin-lr nbtl-button text-center">Ler agora!</a>
+                    </div>
+
+                    <div id="overview-amazon-@i" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        @amazon.sinopse
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-amazon-@i" onclick="toggleCollapse(this)" style="cursor: pointer;"
+                            class="collapsible-button font-bold" onlyAddScroll>
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+
+                    <div class="margin-bt padding-top">Avaliação: <b>⭐ @amazon.geral_evaluation </b></div>
+                    <div class="margin-top">
+                        <article class="margin-bot">
+                            @if !(amazon.price_kindle_ebook == none)
+                            <gridflex>
+                                <span>Preço eBook: R$ ${ amazon.price_kindle_ebook or {0}.str() }</span>
+                            </gridflex>
+                            @endif
+                        </article>
+                        <article class="margin-top">
+                            @if !(amazon.price_printed == none)
+                            <gridflex>
+                                <span>Preço físico: R$ ${ amazon.price_printed or {0}.str() }</span>
+                            </gridflex>
+                            @endif
+                        </article>
+                    </div>
+                </article>
+                @endif
+                @endfor
+
+                @if livros_gratuitos_product.link != ''
+                <article class="card">
+                    <gridflex>
+                        ${ comp_badge(.none, '', 'Livro Gratuito') }
+                        ${ comp_badge(.warn, '', 'Gratuito') }
+                        ${ comp_badge(.success, '', 'Domínio público') }
+                    </gridflex>
+                    <h3 class="card-title title-size">@livros_gratuitos_product.title</h3>
+                    <div style="height: 250px;">
+                        <div class="card-image flex justify-center align-center">
+                            <img nbtl src="@livros_gratuitos_product.thumbnail_link" style="width: 40%;" />
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center padding-lr">
+                        <a href="@livros_gratuitos_product.link" target="_blank" class="container-full margin-lr nbtl-button text-center">Ler agora!</a>
+                    </div>
+
+                    <div id="overview-livros-gratuitos" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        @livros_gratuitos_product.overview
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-livros-gratuitos" onclick="toggleCollapse(this)" style="cursor: pointer;"
+                            class="collapsible-button font-bold">
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+
+                    <div class="margin-bt padding-top">Leitura: <b>📖 Online </b></div>
+                        <article class="margin-bot margin-top">
+                            <gridflex>
+                                <span>Preço: Gratuito</span>
+                            </gridflex>
+                        </article>
+                </article>
+                @endif
+            </gridflex>
+        </section>
+
+        <!-- Seção Assistir -->
+        <section class="content-section">
+            <h2 class="section-title">Assistir</h2>
+            <gridflex class="justify-center">
+                @if mercadolivre_play_products.link != ''
+                <article class="card">
+                    <gridflex>
+                        ${ comp_badge(.none, '', 'Mercado Livre Play') }
+                        ${ comp_badge(.warn, '', 'Gratuito') }
+                    </gridflex>
+                    <h3 class="card-title">@mercadolivre_play_products.title</h3>
+                    <div class="card-image flex justify-center" style="margin-top: 20%; margin-bottom: 10%;">
+                        <img nbtl class="dynamic-fit" src="@mercadolivre_play_products.thumbnails_links" alt="@mercadolivre_play_products.title" style="max-width: 87%; height: 170px;" />
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const images = document.querySelectorAll('.dynamic-fit');
+                            images.forEach(img => {
+                                if (img.naturalWidth > img.naturalHeight) {
+                                    img.style.objectFit = 'cover';
+                                    img.style.height = '170px';
+                                } else {
+                                    img.style.objectFit = 'contain';
+                                    img.style.height = '200px';
+                                }
+                            });
+                        });
+                    </script>
+                    
+                    @if mercadolivre_play_products.trailer_link != ''
+                        <div class="flex justify-center padding-lr padding-top margin-top">
+                            <button class="container-full margin-lr text-center" data-title="@mercadolivre_play_products.title" data-trailer="@mercadolivre_play_products.trailer_link" onclick="openTrailerModal(this)">Assistir trailer</button>
+                        </div>
+                    @endif
+                    <div class="flex justify-center padding-lr padding-top margin-top">
+                        <a href="@mercadolivre_play_products.link" target="_blank" class="container-full margin-lr nbtl-button text-center">Assistir agora!</a>
+                    </div>
+                    <div id="overview-mercado-livre" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        @mercadolivre_play_products.overview
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-mercado-livre" onclick="toggleCollapse(this)"
+                            style="cursor: pointer;" class="collapsible-button font-bold">
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+
+                    <div class="margin-bt padding-top">Avaliação: <b>⭐ @mercadolivre_play_products.geral_evaluation
+                        </b></div>
+                    <ul>
+                        <li>Ano: <b>@mercadolivre_play_products.year</b></li>
+                    </ul>
+                    <span>Gêneros: <b>@mercadolivre_play_products.genders</b></span>
+                </article>
+                @endif
+
+                @if netflix_products.link != ''
+                <article class="card">
+                    <gridflex>
+                        ${ comp_badge(.none, '', 'Netflix') }
+                        ${ comp_badge(.warn, '', 'Assinatura') }
+                    </gridflex>
+                    <h3 class="card-title">@netflix_products.title</h3>
+                    <div class="card-image flex justify-center align-center" style="height: 230px;">
+                        <img nbtl src="@netflix_products.thumbnails_links" width="300" />
+                    </div>
+
+                    @if netflix_products.trailer_link != ''
+                        <div class="flex justify-center padding-lr padding-top margin-top">
+                            <button class="container-full margin-lr text-center" data-title="@netflix_products.title" data-trailer="@netflix_products.trailer_link" onclick="openTrailerModal(this)">Assistir trailer</button>
+                        </div>
+                    @endif
+                    <div class="flex justify-center padding-lr padding-top margin-top">
+                        <a href="@netflix_products.link" target="_blank" class="container-full margin-lr nbtl-button text-center">Assistir agora!</a>
+                    </div>
+                    <div id="overview-netflix" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        @netflix_products.overview
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-netflix" onclick="toggleCollapse(this)" style="cursor: pointer;"
+                            class="collapsible-button font-bold">
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+
+                    <div class="margin-bt padding-top">Avaliação: <b>⭐ Não definido </b>
+                    </div>
+                    <ul>
+                        <li>Ano: <b>@netflix_products.year</b></li>
+                    </ul>
+                    <span>Gêneros: <b>@netflix_products.genders</b></span>
+                </article>
+                @endif
+
+            </gridflex>
+        </section>
+
+        <!-- Seão jogar -->
+        <section class="content-section">
+            <h2 class="section-title">Jogar</h2>
+
+            <gridflex class="justify-center">
+                @if instant_gaming_products.link != ''
+                <article class="card">
+                    <gridflex>
+                        ${ comp_badge(.none, '', 'Instant Gaming') }
+                        ${ comp_badge(.warn, '', 'Pago') }
+                    </gridflex>
+                    <h3 class="card-title">@instant_gaming_products.title</h3>
+                    <div style="height: 250px;">
+                        <div class="card-image flex justify-center align-center">
+                            @if instant_gaming_products.images.len > 0 && instant_gaming_products.images[0].image_url != ''
+                                <img nbtl src="${ instant_gaming_products.images[0].image_url }" width="300" style="margin-top: 10%;" />
+                            @endif
+                        </div>
+                    </div>
+
+                    @if instant_gaming_products.images.len > 0 && instant_gaming_products.images[0].image_url != ''
+                        <div class="flex justify-center padding-lr padding-top margin-top">
+                            <button class="container-full margin-lr text-center" data-title="@instant_gaming_products.title" data-trailer="@instant_gaming_products.preview_video" onclick="openTrailerModal(this)" >Assistir trailer</button>
+                        </div>
+                    @endif
+                    <div class="flex justify-center padding-lr padding-top margin-top">
+                        <a href="@instant_gaming_products.link" target="_blank" class="container-full margin-lr nbtl-button text-center">Jogar agora!</a>
+                    </div>
+                    <div id="overview-instant-gaming" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        @instant_gaming_products.about
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-instant-gaming" onclick="toggleCollapse(this)"
+                            style="cursor: pointer;" class="collapsible-button font-bold">
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="margin-bt padding-top">
+                            Avaliação: <b>⭐ @instant_gaming_products.review_general </b>
+                        </div>
+
+                        <span class="margin-bot">Gêneros: <b>@instant_gaming_products.genders</b></span>
+                        <article class="margin-top">
+                            Preço: R$ @instant_gaming_products.price
+                            @if !(instant_gaming_products.price_old == none)
+                                (<s>R$ ${ instant_gaming_products.price_old or {0}.str() }</s>)
+                            @endif
+                        </article>
+                    </div>
+
+                </article>
+                @endif
+            </gridflex>
+        </section>
+    </div>
+
+    ${ construct_register_contract() }
+
+    <!--- FOOTER IS HERE -->
+    @include '/src/server/features/generate_page/view/footer.html'
+    
+    <!-- MODALS -->
+    <div id="modal-main" class="modal" action-close-callback="closeModal">
+        <article class="modal-content" style="width: 60%; height: 60%;">
+            <header class="flex justify-space-between align-center padding-bot" style="height: 60px;">
+                <h2 id="title-modal">TITLE</h2>
+                <span class="close-modal" xclose-modal>&times;</span>
+            </header>
+            
+            <div class="margin-top padding-top" style="height: 85%;">
+                <iframe id="trailer" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </article>
+    </div>
+
+    @js '/assets/utils/devices.js'
+    @js '/assets/tags/modal.js'
+    @js '/assets/base.js'
+</body>
+
+<script>
+    // @include '/index.js'
+</script>
+
+
+<style>
+    @include '/index.css' //;
+    @include '/footer.css' //;
+</style>
+
+
+</html>
+
+<style>
+    @media screen and (max-width: 700px) {
+        .subscription-form {
+            flex-direction: column;
+            align-items: center;
+        }
+        .subscription-form .input-group {
+            width: 100%;
+            max-width: 300px;
+        }
+        .subscription-form .divider {
+            margin: 1rem 0;
+        }
+    }
+</style>

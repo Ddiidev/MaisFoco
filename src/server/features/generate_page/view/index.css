@@ -1,0 +1,90 @@
+.title-size {
+    height: 60px;
+}
+
+.floating-card {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 12px 20px;
+}
+
+.floating-card button {
+    background-color: white;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2px;
+}
+
+.menu-icon span {
+    width: 16px;
+    height: 2px;
+    background-color: #333;
+    display: block;
+}
+
+.content-section {
+    margin: 32px 0;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background: var(--background-color);
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0 var(--border-color);
+    padding: 16px;
+}
+
+.card[dashed] {
+    transform: rotate(-5deg);
+}
+
+.free-tag {
+    background: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: var(--default-rounded-square);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.modal-recomendation {
+    width: 40%;
+    height: auto;
+}
+
+/* Media queries for mobile L on class modal-recomendation */
+@media screen and (max-width: 768px) {
+    .modal-recomendation {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .modal-recomendation * {
+        width: 100%;
+        font-size: xx-small;
+    }
+}

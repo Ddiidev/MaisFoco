@@ -1,0 +1,6 @@
+.tooltip-for-mobile {
+    font-size: small;
+    font-style: italic;
+    border: 2px dashed #333;
+    padding: 8px;
+}

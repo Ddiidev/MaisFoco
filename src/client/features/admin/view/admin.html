@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <title>Importar JSON</title>
+    @js '/assets/tags/modal.js'
+    @css '/assets/base.css'
+    @js '/assets/base.js'
+    <script src="https://unpkg.com/htmx.org@@2.0.4"
+        integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx-ext-sse@@2.2.2/sse.js"></script>
+</head>
+
+<body>
+    <div class="container padding-top flex justify-center">
+        <div class="w-content margin-bt">
+            <h2 class="font-bold">Importar Arquivo JSON</h2>
+
+            <form hx-post="/admin/upload-jsons" enctype="multipart/form-data" hx-target="#result" class="margin-top"
+                hx-indicator="#loading-result">
+
+                <div class="margin-bt">
+                    <label>
+                        Selecione um ou mais arquivos JSON
+                        <input type="file" no-border name="file" accept=".json" hx-trigger="change" multiple>
+                    </label>
+                </div>
+
+                <textarea class="padding-bt padding-lr" style="width: 100%;" no-resize readonly
+                    placeholder="O preview do JSON aparecerá aqui"></textarea>
+
+                <button type="submit">
+                    Salvar Importação
+                </button>
+
+            </form>
+
+            <div id="loading-result" class="htmx-indicator loading-dots">
+                Carregando
+            </div>
+            <div id="result" style="width: 55%;" class="margin-top padding-bt"></div>
+        </div>
+    </div>
+</body>
+
+</html>

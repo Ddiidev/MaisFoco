@@ -1,0 +1,45 @@
+<div class="container">
+    <section class="content-section">
+        <h2 class="section-title">Receba no seu E-mail/WhatsApp</h2>
+        <span>
+            Você pode receber recomendações via email ou WhatsApp.
+            <br />
+            Todas as recomendações, chegará diariamente ás 6h da manhã, e poderá ser cancelada por você a qualquer
+            momento.
+            <br />
+            <br />
+            E sempre na primeira <strong>segunda feira</strong> <u><strong>do mês</strong></u>, haverá um sorteio
+            automático
+            de um livro, filme ou jogo. E será entregue a chave de graça no E-mail/WhatsApp do sorteado.
+        </span>
+        <div class="flex justify-center padding-lr subscription-form margin-top">
+            <div class="margin-lr input-group">
+                <label for="email">Email</label>
+                <div id="captcha-email"></div>
+                <div role="group" class="flex justify-center">
+                    <input id="idContactEmail" type="email" name="email" placeholder="Digite seu email" style="width: 130%;" />
+                    <button type="submit" onclick="generateEmailToken()">Enviar</button>
+                </div>
+            </div>
+        
+            <div class="flex margin-lr margin-top padding-top text-center align-center divider">
+                <i>Ou</i>
+            </div>
+        
+            <div class="margin-lr input-group">
+                <label for="WhatsApp">WhatsApp</label>
+                <div id="captcha-whatsapp"></div>
+                <div role="group" class="flex justify-center">
+                    <input id="idContactWhatsApp" type="number" name="WhatsApp" placeholder="Digite seu WhatsApp" style="width: 130%;" />
+                    <button type="submit" onclick="generateWhatsAppToken()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    // @include './index.js'
+    
+    // @include 'src/shareds/assets/utils/notifications.js'
+</script>

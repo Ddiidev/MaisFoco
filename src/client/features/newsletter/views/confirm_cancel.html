@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    
+    @include '/src/shareds/components/og/og.html'
+
+    <title>Cancelamento Confirmado - MaisFoco</title>
+    @css '/assets/base.css'
+</head>
+
+<body>
+    <div class="container text-center" style="max-width: 800px;">
+        <!-- Logo section -->
+        <div class="margin-bot">
+            <img src="/assets/images/logo.webp" alt="MaisFoco Logo" style="max-width: 200px;">
+        </div>
+
+        <!-- Confirmation message -->
+        <article>
+            <h1 class="margin-bot">Cancelamento Confirmado</h1>
+            <p class="margin-bot" style="font-size: 18px;">Você foi removido da nossa lista de newsletter com sucesso.</p>
+            <p class="margin-bot" style="font-size: 16px;">O MaisFoco estará sempre aqui esperando por você quando se sentir confortável para retornar.</p>
+            <p class="margin-bot" style="font-size: 16px;">Lembre-se que você sempre poderá encontrar recomendações e conteúdos úteis em nosso site <a href="https://maisfoco.life" class="font-bold">maisfoco.life</a>.</p>
+        </article>
+
+        <!-- Additional information -->
+        <div class="margin-top margin-bot padding-bot">
+            <p><i>Sentiremos sua falta, mas respeitamos sua decisão.</i></p>
+            <p><i>Se quiser voltar a receber nossas novidades no futuro, basta se inscrever novamente em nossa página inicial.</i></p>
+        </div>
+
+        <!-- Return button -->
+        <div class="margin-top padding-top">
+            <a href="/" class="nbtl-button w-content">Voltar para a página inicial</a>
+        </div>
+    </div>
+</body>
+
+</html>

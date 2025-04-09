@@ -3,8 +3,8 @@ module recomendation
 import os
 import veb
 import time
-import shareds.logger
-import shareds.conf_env
+import mf_core.logger
+import mf_core.conf_env
 import server.features.generate_page
 
 pub fn get_recomendation_today(mut log logger.ILogger) veb.RawHtml {

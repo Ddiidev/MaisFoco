@@ -1,10 +1,10 @@
 module controllers
 
 import json
-import shareds.utils
-import shareds.logger
-import server.features.amazon.entities
-import server.features.amazon.repository
+import mf_core.utils
+import mf_core.logger
+import mf_core.features.amazon.entities
+import mf_core.features.amazon.repository
 
 pub fn import(mut log logger.ILogger, json_str string) ! {
 	mut entitie := json.decode(entities.AmazonProduct, json_str)!

@@ -2,7 +2,7 @@ module amazon
 
 import json
 import shareds.db
-import shareds.logger
+import mf_core.logger
 import server.features.amazon.models
 import server.features.amazon.controllers
 

@@ -1,6 +1,6 @@
 module utils
 
-import src.shareds.utils as shareds_utils
+import src.mf_core.utils as shareds_utils
 
 fn test_validating_email() {
 	// Valid email cases with real domains

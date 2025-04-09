@@ -1,7 +1,7 @@
 module contact
 
 import veb
-import shareds.logger
+import mf_core.logger
 
 pub struct ContactController {
 	veb.Context

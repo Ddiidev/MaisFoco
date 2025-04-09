@@ -3,8 +3,8 @@ module instant_gaming
 import time
 import json
 import shareds.db
-import shareds.utils
-import shareds.logger
+import mf_core.utils
+import mf_core.logger
 import server.features.instant_gaming.models
 import server.features.instant_gaming.controllers
 

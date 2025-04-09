@@ -1,7 +1,7 @@
 module home
 
 import veb
-import shareds.logger
+import mf_core.logger
 
 pub struct HomePage {
 	veb.Controller

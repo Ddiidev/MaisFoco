@@ -2,7 +2,7 @@ module livros_gratuitos
 
 import json
 import shareds.db
-import shareds.logger
+import mf_core.logger
 import server.features.livros_gratuitos.models
 import server.features.livros_gratuitos.controllers
 

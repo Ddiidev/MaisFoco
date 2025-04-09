@@ -1,10 +1,10 @@
 module controllers
 
 import json
-import shareds.utils
-import shareds.logger
-import server.features.instant_gaming.entities
-import server.features.instant_gaming.repository
+import mf_core.utils
+import mf_core.logger
+import mf_core.features.instant_gaming.entities
+import mf_core.features.instant_gaming.repository
 
 pub fn import(mut log logger.ILogger, json_str string) ! {
 	mut entitie := json.decode(entities.InstantGamingProduct, json_str)!

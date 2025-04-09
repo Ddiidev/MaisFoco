@@ -2,11 +2,11 @@ module controllers
 
 import json
 import rand
-import shareds.utils
-import server.features.user_recomendation.models
-import server.features.user_recomendation.entities
-import server.features.user_recomendation.addapters
-import server.features.user_recomendation.repository
+import mf_core.utils
+import mf_core.features.user_recomendation.models
+import mf_core.features.user_recomendation.entities
+import mf_core.features.user_recomendation.addapters
+import mf_core.features.user_recomendation.repository
 
 pub fn send_user_recomendation(recomendation_json string) ! {
 	recomendation_model := json.decode(models.UserRecomendation, recomendation_json)!

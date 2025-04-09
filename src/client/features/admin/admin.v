@@ -1,7 +1,7 @@
 module admin
 
 import veb
-import shareds.logger
+import mf_core.logger
 import shareds.wcontext
 import server.features.amazon.controllers as control_amazon
 import server.features.netflix.controllers as control_netflix

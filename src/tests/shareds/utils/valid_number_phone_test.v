@@ -1,6 +1,6 @@
 module utils
 
-import src.shareds.utils as shareds_utils
+import src.mf_core.utils as shareds_utils
 
 fn test_validate_phone_number_valid_10_digits() {
 	assert shareds_utils.validate_phone_number('1122334455')

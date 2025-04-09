@@ -1,7 +1,7 @@
 module about
 
 import veb
-import shareds.logger
+import mf_core.logger
 
 pub struct AboutCrontoller {
 	veb.Context

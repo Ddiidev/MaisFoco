@@ -1,10 +1,10 @@
 module contacts
 
 import recaptcha
-import shareds.utils
-import shareds.conf_env
-import server.features.contacts.entities
-import server.features.contacts.repository
+import mf_core.utils
+import mf_core.conf_env
+import mf_core.features.contacts.entities
+import mf_core.features.contacts.repository
 
 pub fn register_email(recaptcha_token string, email string) ! {
 	env := conf_env.load_env()

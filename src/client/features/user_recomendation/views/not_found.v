@@ -1,9 +1,9 @@
 module views
 
 import veb
-import shareds.conf_env
+import mf_core.conf_env
 import shareds.components.footer
-import server.features.user_recomendation.errors
+import mf_core.features.user_recomendation.errors
 
 pub fn not_found(error IError) veb.RawHtml {
 	env := conf_env.load_env()

@@ -1,7 +1,7 @@
 module body_email
 
-import shareds.conf_env
-import server.features.user_recomendation.models
+import mf_core.conf_env
+import mf_core.features.user_recomendation.models
 
 // Gera um body para enviar email de confirmação do usuário sobre a recomendação feita.
 pub fn body_email_string(recommendation models.UserRecomendation) string {

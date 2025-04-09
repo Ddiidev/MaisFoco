@@ -1,10 +1,10 @@
 module controllers
 
 import json
-import shareds.utils
-import shareds.logger
-import server.features.mercado_livre_play.entities
-import server.features.mercado_livre_play.repository
+import mf_core.utils
+import mf_core.logger
+import mf_core.features.mercado_livre_play.entities
+import mf_core.features.mercado_livre_play.repository
 
 pub fn import(mut log logger.ILogger, json_str string) ! {
 	mut entitie := json.decode(entities.MercadoLivrePlayProduct, json_str)!

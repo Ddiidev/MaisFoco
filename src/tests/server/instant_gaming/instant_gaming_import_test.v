@@ -2,7 +2,7 @@ module instant_gaming
 
 import json
 import shareds.db
-import shareds.logger
+import mf_core.logger
 import server.features.instant_gaming.models
 import server.features.instant_gaming.controllers
 

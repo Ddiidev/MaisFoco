@@ -4,7 +4,7 @@ import os
 import time
 import json
 import shareds.db
-import shareds.logger
+import mf_core.logger
 import server.features.generate_page as generate_page_module
 import server.features.amazon.models as models_amazon
 import server.features.amazon.controllers as control_amazon

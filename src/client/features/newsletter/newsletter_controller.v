@@ -1,7 +1,7 @@
 module newsletter
 
 import veb
-import shareds.logger
+import mf_core.logger
 
 pub struct NewsletterController {
 	veb.Controller

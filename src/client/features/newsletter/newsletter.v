@@ -1,7 +1,7 @@
 module newsletter
 
 import veb
-import shareds.utils
+import mf_core.utils
 import shareds.wcontext
 import server.features.contacts
 

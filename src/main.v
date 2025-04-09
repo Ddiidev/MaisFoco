@@ -1,7 +1,7 @@
 module main
 
 import veb
-import shareds.logger
+import mf_core.logger
 import shareds.wcontext
 import client.features.about as ctrl_about
 import client.features.admin as ctrl_admin

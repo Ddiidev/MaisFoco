@@ -1,7 +1,7 @@
 Module {
-	name: 'MaisFocoZeroAnsiedade'
+	name: 'MaisFoco'
 	description: '<EOF>'
 	version: '0.0.0'
 	license: 'MIT'
-	dependencies: []
+	dependencies: ['https://github.com/Ddiidev/Core']
 }

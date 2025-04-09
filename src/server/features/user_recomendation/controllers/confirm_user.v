@@ -1,7 +1,7 @@
 module controllers
 
-import shareds.handle_email.service
-import server.features.user_recomendation.models
+import mf_core.handle_email.service
+import mf_core.features.user_recomendation.models
 import server.features.user_recomendation.controllers.body_email
 
 // Envia email de confirmação da recomendação que o usuário fez

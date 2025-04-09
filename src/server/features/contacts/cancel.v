@@ -3,10 +3,10 @@ module contacts
 import json
 import rand
 import net.http
-import shareds.utils
-import shareds.conf_env
-import shareds.handle_email.service as email
-import server.features.contacts.repository
+import mf_core.utils
+import mf_core.conf_env
+import mf_core.handle_email.service as email
+import mf_core.features.contacts.repository
 
 const endpoint = 'layer-maisfoco/confirm-cancel-whatsapp'
 

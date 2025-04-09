@@ -3,8 +3,8 @@ module amazon
 import time
 import json
 import shareds.db
-import shareds.utils
-import shareds.logger
+import mf_core.utils
+import mf_core.logger
 import server.features.amazon.models
 import server.features.amazon.controllers
 

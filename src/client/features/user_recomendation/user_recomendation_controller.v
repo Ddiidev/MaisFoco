@@ -1,7 +1,7 @@
 module user_recomendation
 
 import veb
-import shareds.logger
+import mf_core.logger
 
 pub struct UserRecomendation {
 	veb.Context

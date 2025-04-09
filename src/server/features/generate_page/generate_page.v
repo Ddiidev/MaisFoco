@@ -1,18 +1,18 @@
 module generate_page
 
-import shareds.logger
+import mf_core.logger
 import shareds.components.badge
 import shareds.components.menu_floating
 import shareds.components.register_contact
 import server.features.amazon.controllers as control_amazon
 import server.features.netflix.controllers as control_netflix
-import server.features.netflix.models as models_netflix
+import mf_core.features.netflix.models as models_netflix
 import server.features.instant_gaming.controllers as control_instant_gaming
-import server.features.instant_gaming.models as models_instant_gaming
+import mf_core.features.instant_gaming.models as models_instant_gaming
 import server.features.mercado_livre_play.controllers as control_mercado_livre_play
-import server.features.mercado_livre_play.models as models_mercado_livre_play
+import mf_core.features.mercado_livre_play.models as models_mercado_livre_play
 import server.features.livros_gratuitos.controllers as control_livros_gratuitos
-import server.features.livros_gratuitos.models as models_livros_gratuitos
+import mf_core.features.livros_gratuitos.models as models_livros_gratuitos
 
 pub fn generate(mut log logger.ILogger) string {
 	comp_badge := badge.construct

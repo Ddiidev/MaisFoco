@@ -34,8 +34,6 @@ COPY . .
 
 # Instalar dependências do projeto
 RUN v install
-RUN v install https://github.com/ken0x0a/v-dotenv
-RUN v install https://github.com/Ddiidev/recaptcha
 
 # Copiar o arquivo .env.local (será substituído pelo volume)
 COPY .env.local .env.local

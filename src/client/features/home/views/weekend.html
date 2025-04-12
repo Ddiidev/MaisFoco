@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais foco, feriado!</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    @css '/assets/base.css'
+    @css '/assets/neubrutalism.css'
+    <style>
+        @include './weekend.css';
+    </style>
+</head>
+
+<body>
+    ${ construct_menu_floating() }
+
+    <div class="container" style="margin-top: 80px;">
+        <section class="content-section">
+            <h1 class="section-title">Hoje é final de semana!</h1>
+            <p>Dia de relaxar com a família ou consigo mesmo, terminar aquele livro que começou, jogar o jogo que não
+                teve tempo para zerar ou assistir o filme que sempre quis ver.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Eu André Luiz estou lendo, jogando e assistindo esse abaixo.
+            </h3>
+            <i>Para hoje eu não tenho nada para recomendar, particurlamente isso não é uma recomendação!!</i>
+        </section>
+
+        <section class="content-section">
+            <gridflex class="justify-center">
+                <article class="card">
+                    <gridflex>
+                        <div class="flex align-center w-content rounded-square badge badge-none">
+                            <span>Amazon</span>
+                        </div>
+
+                        <div class="flex align-center w-content rounded-square badge badge-warn">
+                            <span>Ler</span>
+                        </div>
+                    </gridflex>
+                    <h3 class="card-title title-size">Ultra-aprendizado</h3>
+                    <div style="height: 300px;" class="flex justify-center align-center">
+                        <div class="card-image w-content ">
+                            <img nbtl src="https://m.media-amazon.com/images/I/71KcBUA91KL._SY466_.jpg"
+                                style="width: 50%; max-height: 200px; margin-bottom: 50px;" />
+                        </div>
+                    </div>
+                    <div class="flex justify-center padding-lr">
+                        <a href="https://amzn.to/4ltinvc" target="_blank"
+                            class="container-full margin-lr nbtl-button text-center">Ler agora!</a>
+                    </div>
+                    <div id="overview-ultra-aprendizado" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        Aprenda a dominar habilidades difíceis em tempo recorde com técnicas comprovadas de aprendizado
+                        acelerado.
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-ultra-aprendizado" onclick="toggleCollapse(this)"
+                            style="cursor: pointer;" class="collapsible-button font-bold" onlyAddScroll>
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <gridflex>
+                        <div class="flex align-center w-content rounded-square badge badge-none">
+                            <span>Apple TV+</span>
+                        </div>
+
+                        <div class="flex align-center w-content rounded-square badge badge-warn">
+                            <span>Assistir</span>
+                        </div>
+                    </gridflex>
+                    <h3 class="card-title title-size">Ruptura</h3>
+                    <div style="height: 300px;" class="flex justify-center align-center">
+                        <div class="card-image w-content">
+                            <img nbtl
+                                src="https://blog.tabacariadamata.com.br/wp-content/uploads/2021/10/rupturadamata-.jpg"
+                                style="width: 80%; max-height: 300px; margin-bottom: 50px;" />
+                        </div>
+                    </div>
+                    <div class="flex justify-center padding-lr">
+                        <a href="https://tv.apple.com/br/show/ruptura/umc.cmc.1srk2goyh2q2zdxcx605w8vtx" target="_blank"
+                            class="container-full margin-lr nbtl-button text-center">Assistir agora!</a>
+                    </div>
+                    <div id="overview-ruptura" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        Uma série de ficção científica onde funcionários de uma empresa misteriosa passam por um
+                        procedimento que separa suas memórias de trabalho das pessoais.
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-ruptura" onclick="toggleCollapse(this)" style="cursor: pointer;"
+                            class="collapsible-button font-bold" onlyAddScroll>
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <gridflex>
+                        <div class="flex align-center w-content rounded-square badge badge-none">
+                            <span>InstantGaming: Steam</span>
+                        </div>
+
+                        <div class="flex align-center w-content rounded-square badge badge-warn">
+                            <span>Jogar</span>
+                        </div>
+                    </gridflex>
+                    <h3 class="card-title title-size">Jusant</h3>
+                    <div style="height: 300px;" class="flex justify-center align-center">
+                        <div class="card-image flex justify-center align-center">
+                            <img nbtl
+                                src="https://gaming-cdn.com/images/products/14349/616x353/jusant-pc-jogo-steam-cover.jpg?v=1728482132"
+                                style="width: 70%; max-height: 300px; margin-bottom: 50px;" />
+                        </div>
+                    </div>
+                    <div class="flex justify-center padding-lr">
+                        <a href="https://www.instant-gaming.com/pt/14349-comprar-jusant-pc-jogo-steam/?igr=maisfoco0a"
+                            target="_blank" class="container-full margin-lr nbtl-button text-center">Jogar agora!</a>
+                    </div>
+                    <div id="overview-jusant" class="margin-bt" style="max-height: 100px; overflow: hidden;">
+                        Um jogo de escalada atmosférico onde você sobe uma torre misteriosa, desvendando segredos e
+                        superando desafios verticais.
+                    </div>
+                    <div class="flex justify-center">
+                        <div target-collapse="overview-jusant" onclick="toggleCollapse(this)" style="cursor: pointer;"
+                            class="collapsible-button font-bold" onlyAddScroll>
+                            ---- Ver mais ----
+                        </div>
+                    </div>
+                </article>
+            </gridflex>
+        </section>
+
+        ${ construct_register_contract() }
+
+        @include 'footer.html'
+    </div>
+
+    @js '/assets/utils/devices.js'
+    @js '/assets/base.js'
+
+    <style>
+        @include './footer.css' //;
+    </style>
+</body>
+
+<script>
+    function toggleCollapse(element) {
+        const targetId = element.getAttribute('target-collapse');
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            const onlyAddScroll = element.hasAttribute('onlyAddScroll');
+
+            if (targetElement.style.maxHeight === '100px') {
+                element.textContent = '---- Ver menos ----';
+
+                if (onlyAddScroll) {
+                    targetElement.style.maxHeight = 'none';
+                    targetElement.style.overflowY = 'scroll';
+                } else {
+                    targetElement.style.maxHeight = '250px';
+                    targetElement.style.overflowY = 'scroll';
+                }
+            } else {
+                element.textContent = '---- Ver mais ----';
+
+                targetElement.style.maxHeight = '100px';
+                targetElement.style.overflowY = 'hidden';
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+/* Estilos específicos para a página weekend.html */
+
+/* Torna os cards mais estreitos */
+.card {
+    max-width: 280px !important;
+    min-width: 250px !important;
+    margin: 0 auto;
+}
+
+/* Garante que as imagens nos cards fiquem contidas dentro do contêiner */
+.card-image img {
+    max-height: 220px;
+    object-fit: contain;
+    width: auto;
+    max-width: 100%;
+    min-width: 85%; /* Aumenta a largura mínima de todas as imagens */
+}
+
+/* Ajusta o contêiner da imagem para garantir espaço adequado */
+.card-image {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Ajuste específico para o card do livro da Amazon (altura menor) */
+section:nth-of-type(2) .card-image img {
+    max-height: 180px;
+}
+
+/* Garante que o texto de descrição não sobreponha outros elementos */
+[id^="overview-"] {
+    margin-top: 10px;
+    clear: both;
+}

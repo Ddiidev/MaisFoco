@@ -1,6 +1,6 @@
 module generate_page
 
-import mf_core.logger
+import mf_core.context_service
 import shareds.components.badge
 import shareds.components.menu_floating
 import shareds.components.register_contact
@@ -14,26 +14,37 @@ import mf_core.features.mercado_livre_play.models as models_mercado_livre_play
 import server.features.livros_gratuitos.controllers as control_livros_gratuitos
 import mf_core.features.livros_gratuitos.models as models_livros_gratuitos
 
-pub fn generate(mut log logger.ILogger) string {
+pub fn generate(mut mf_ctx context_service.ContextService) string {
 	comp_badge := badge.construct
 	construct_menu_floating := menu_floating.construct
 	construct_register_contract := register_contact.construct
 
-	mercadolivre_play_products := control_mercado_livre_play.get_recomendation(mut log) or {
+	mercadolivre_play_products := control_mercado_livre_play.get_recomendation(mut mf_ctx) or {
+		// TODO: IMPLEMENTAR LOG ""OTHER""
+		
 		models_mercado_livre_play.MercadoLivrePlayProduct{}
 	}
 
-	netflix_products := control_netflix.get_recomendation(mut log) or {
+	netflix_products := control_netflix.get_recomendation(mut mf_ctx) or {
+		// TODO: IMPLEMENTAR LOG ""OTHER""
+
 		models_netflix.NetflixProduct{}
 	}
 
-	instant_gaming_products := control_instant_gaming.get_recomendation(mut log) or {
+	instant_gaming_products := control_instant_gaming.get_recomendation(mut mf_ctx) or {
+		// TODO: IMPLEMENTAR LOG ""OTHER""
+
 		models_instant_gaming.InstantGamingProduct{}
 	}
 
-	amazon_products := control_amazon.get_recomendation(mut log) or { [] }
+	amazon_products := control_amazon.get_recomendation(mut mf_ctx) or {
+		// TODO: IMPLEMENTAR LOG ""OTHER""
+		[]
+	}
 
-	livros_gratuitos_product := control_livros_gratuitos.get_recomendation(mut log) or {
+	livros_gratuitos_product := control_livros_gratuitos.get_recomendation(mut mf_ctx) or {
+		// TODO: IMPLEMENTAR LOG ""OTHER""
+
 		models_livros_gratuitos.LivrosGratuitosProduct{}
 	}
 

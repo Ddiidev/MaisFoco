@@ -1,10 +1,12 @@
 module user_recomendation
 
 import veb
-import mf_core.logger
+import shareds.wcontext
+import mf_core.context_service
 
 pub struct UserRecomendation {
 	veb.Context
+	veb.Middleware[wcontext.WsCtx]
 pub mut:
-	log logger.ILogger
+	ctx context_service.ContextService
 }

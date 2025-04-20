@@ -1,10 +1,12 @@
 module contact
 
 import veb
-import mf_core.logger
+import shareds.wcontext
+import mf_core.context_service
 
 pub struct ContactController {
 	veb.Context
+	veb.Middleware[wcontext.WsCtx]
 pub:
-	log logger.ILogger
+	ctx context_service.ContextService
 }

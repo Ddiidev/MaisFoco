@@ -1,10 +1,12 @@
 module newsletter
 
 import veb
-import mf_core.logger
+import shareds.wcontext
+import mf_core.context_service
 
 pub struct NewsletterController {
 	veb.Controller
-pub mut:
-	log logger.ILogger
+	veb.Middleware[wcontext.WsCtx]
+pub:
+	ctx context_service.ContextService
 }

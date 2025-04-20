@@ -1,50 +1,54 @@
 module main
 
 import veb
-import mf_core.logger
 import shareds.wcontext
+import shareds.middlewares.middleware_log
+import mf_core.context_service
 import client.features.about as ctrl_about
 import client.features.admin as ctrl_admin
 import client.features.home as ctrl_home_page
 import client.features.contact as ctrl_contact
-import client.features.user_recomendation as ctrl_user_recomendation
 import client.features.newsletter as ctrl_newsletter
+import client.features.user_recomendation as ctrl_user_recomendation
 
 pub struct Wservice {
 	veb.Controller
 	veb.StaticHandler
+	veb.Middleware[wcontext.WsCtx]
 }
 
 fn main() {
-	mut log := logger.Logger.new('./logs', 'log')
+	mut ctx := context_service.ContextService{}
 
 	mut wservice := &Wservice{}
 
 	mut home_page := &ctrl_home_page.HomePage{
-		log: log
+		ctx: ctx
 	}
 
 	mut admin_page := &ctrl_admin.AdminController{
-		log: log
+		ctx: ctx
 	}
 
 	mut about_page := &ctrl_about.AboutCrontoller{
-		log: log
+		ctx: ctx
 	}
 
 	mut api_user_recomendation := &ctrl_user_recomendation.UserRecomendation{
-		log: log
+		ctx: ctx
 	}
 
 	mut api_contact := &ctrl_contact.ContactController{
-		log: log
+		ctx: ctx
 	}
 
 	mut api_newsletter := &ctrl_newsletter.NewsletterController{
-		log: log
+		ctx: ctx
 	}
 
 	export_resources(mut wservice)!
+
+	include_middlewares_logger(mut home_page, mut admin_page, mut api_user_recomendation, mut about_page, mut api_contact, mut api_newsletter)!
 
 	wservice.register_controller[ctrl_home_page.HomePage, wcontext.WsCtx]('/inicio', mut
 		home_page)!
@@ -70,6 +74,26 @@ fn main() {
 	} $else {
 		veb.run[Wservice, wcontext.WsCtx](mut wservice, 5058)
 	}
+}
+
+fn include_middlewares_logger(mut home_page ctrl_home_page.HomePage, mut admin_page ctrl_admin.AdminController, mut api_user_recomendation ctrl_user_recomendation.UserRecomendation, mut about_page ctrl_about.AboutCrontoller, mut api_contact ctrl_contact.ContactController, mut api_newsletter ctrl_newsletter.NewsletterController) ! {
+	home_page.route_use('/:...', handler: middleware_log.logger_start)
+	home_page.route_use('/:...', handler: middleware_log.logger_end, after: true)
+
+	admin_page.route_use('/:...', handler: middleware_log.logger_start)
+	admin_page.route_use('/:...', handler: middleware_log.logger_end, after: true)
+
+	api_user_recomendation.route_use('/:...', handler: middleware_log.logger_start)
+	api_user_recomendation.route_use('/:...', handler: middleware_log.logger_end, after: true)
+	
+	about_page.route_use('/:...', handler: middleware_log.logger_start)
+	about_page.route_use('/:...', handler: middleware_log.logger_end, after: true)
+	
+	api_contact.route_use('/:...', handler: middleware_log.logger_start)
+	api_contact.route_use('/:...', handler: middleware_log.logger_end, after: true)
+	
+	api_newsletter.route_use('/:...', handler: middleware_log.logger_start)
+	api_newsletter.route_use('/:...', handler: middleware_log.logger_end, after: true)
 }
 
 pub fn (ws &Wservice) index(mut ctx wcontext.WsCtx) veb.Result {
